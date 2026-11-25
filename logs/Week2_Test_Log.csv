@@ -1,0 +1,59 @@
+﻿test_id,category,description,input,expected,actual,status,notes,date
+N01,Normal,Paraphrase with one shared word,Where can I check the exam timetable?,FAQ002 (overlap 1),FAQ002 (overlap 1),PASS,,2026-11-25
+N02,Normal,Paraphrase 'sign up' for 'register',How do I sign up for courses?,FAQ003 (overlap 1),FAQ003 (overlap 1),PASS,,2026-11-25
+N03,Normal,Exact copy of FAQ008 question (5 shared words),What payment options are available for tuition fees?,FAQ008 (overlap 5),FAQ008 (overlap 5),PASS,,2026-11-25
+N04,Normal,"Several shared words (many, credits, graduate)",How many credits do I need to graduate?,FAQ007 (overlap 3),FAQ007 (overlap 3),PASS,,2026-11-25
+N05,Normal,Tie FAQ008 vs FAQ009: smallest id wins,How much does tuition cost per semester and how can I pay?,FAQ008 (overlap 1),FAQ008 (overlap 1),PASS,,2026-11-25
+M01,Missing/zero data,Empty question,,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+M02,Missing/zero data,Only spaces,     ,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+M03,Missing/zero data,None instead of text,(None),OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+M04,Missing/zero data,Zero overlap (unrelated question),What is the best pizza in town?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+M05,Missing/zero data,"Only stop-words, no content word",How do I do this?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+M06,Missing/zero data,FAQ row with empty answer is dropped,"synthetic_faq_dirty.csv, row S004",S004 dropped,S004 dropped,PASS,,2026-11-25
+M07,Missing/zero data,FAQ row with empty question is dropped,"synthetic_faq_dirty.csv, row S005",S005 dropped,S005 dropped,PASS,,2026-11-25
+M08,Missing/zero data,"Only template words (find, information, students)",Where can students find information?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+D01,Duplicate data,Second row with same faq_id is dropped,"synthetic_faq_dirty.csv, 2nd S001",duplicate faq_id removed,duplicate faq_id removed,PASS,,2026-11-25
+D02,Duplicate data,Same question with other case/spacing is dropped,"synthetic_faq_dirty.csv, S003",duplicate question removed,duplicate question removed,PASS,,2026-11-25
+D03,Duplicate data,Repeated words are counted once,exam exam exam schedule schedule,FAQ002 (overlap 2),FAQ002 (overlap 2),PASS,,2026-11-25
+D04,Duplicate data,Repeated query (case/spacing) evaluated once,"3 queries, 1 repeated",2 unique queries,2 unique queries,PASS,,2026-11-25
+D05,Duplicate data,Clean rows kept after cleaning the dirty file,synthetic_faq_dirty.csv (6 rows),"2 rows kept (S001, S002)","2 rows kept (S001, S002)",PASS,,2026-11-25
+E01,Edge case,Upper case and punctuation,WHERE CAN I SEE THE EXAM SCHEDULE???,FAQ002 (overlap 2),FAQ002 (overlap 2),PASS,,2026-11-25
+E02,Edge case,Punctuation only,"?!?! ... ,,,",OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+E03,Edge case,"Typo in one word, other word still matches",Where is the exm schedule?,FAQ002 (overlap 1),FAQ002 (overlap 1),PASS,,2026-11-25
+E04,Edge case,Typo in the only content word,How do I get my transcrpit?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+E05,Edge case,Albanian question (system is English only),Ku mund ta gjej orarin e provimeve?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+E06,Edge case,Plural 'exams' does not match 'exam' (no stemming),When are the exams held?,OUT_OF_SCOPE (overlap 0),OUT_OF_SCOPE (overlap 0),PASS,,2026-11-25
+E07,Edge case,Very long input (400 words),exam schedule exam schedule exam schedul ... [400 words],FAQ002 (overlap 2),FAQ002 (overlap 2),PASS,,2026-11-25
+V01,Evaluation (in_scope_direct),Synthetic query Q01,Where can I find the academic calendar?,FAQ001,FAQ001 (overlap 2),PASS,correct,2026-11-25
+V02,Evaluation (in_scope_paraphrase),Synthetic query Q02,What are the important dates this semester?,FAQ001,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V03,Evaluation (in_scope_paraphrase),Synthetic query Q03,Where can I check the exam timetable?,FAQ002,FAQ002 (overlap 1),PASS,correct,2026-11-25
+V04,Evaluation (in_scope_paraphrase),Synthetic query Q04,When are the exams held?,FAQ002,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V05,Evaluation (in_scope_paraphrase),Synthetic query Q05,How do I sign up for courses?,FAQ003,FAQ003 (overlap 1),PASS,correct,2026-11-25
+V06,Evaluation (in_scope_paraphrase),Synthetic query Q06,I want to enroll in my subjects.,FAQ003,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V07,Evaluation (in_scope_paraphrase),Synthetic query Q07,Where do I find scholarship details?,FAQ004,FAQ004 (overlap 1),PASS,correct,2026-11-25
+V08,Evaluation (in_scope_paraphrase),Synthetic query Q08,Are there any financial aid opportunities?,FAQ004,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V09,Evaluation (in_scope_paraphrase),Synthetic query Q09,How can I get my transcript?,FAQ005,FAQ005 (overlap 1),PASS,correct,2026-11-25
+V10,Evaluation (in_scope_paraphrase),Synthetic query Q10,I need an official document showing my grades.,FAQ005,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V11,Evaluation (in_scope_paraphrase),Synthetic query Q11,Where can I get a certificate from the registry?,FAQ005,FAQ005 (overlap 1),PASS,correct,2026-11-25
+V12,Evaluation (in_scope_paraphrase),Synthetic query Q12,How can I contact Student Services?,FAQ006,FAQ006 (overlap 1),PASS,correct,2026-11-25
+V13,Evaluation (in_scope_paraphrase),Synthetic query Q13,Which office helps students with admission and guidance?,FAQ006,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V14,Evaluation (in_scope_direct),Synthetic query Q14,How many credits do I need to graduate?,FAQ007,FAQ007 (overlap 3),PASS,correct,2026-11-25
+V15,Evaluation (in_scope_paraphrase),Synthetic query Q15,What are the graduation requirements?,FAQ007,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V16,Evaluation (in_scope_direct),Synthetic query Q16,What payment options exist for tuition?,FAQ008,FAQ008 (overlap 3),PASS,correct,2026-11-25
+V17,Evaluation (in_scope_paraphrase),Synthetic query Q17,Can I pay my tuition in installments?,FAQ008,FAQ008 (overlap 1),PASS,correct,2026-11-25
+V18,Evaluation (in_scope_direct),Synthetic query Q18,How can I pay an invoice online?,FAQ009,FAQ009 (overlap 2),PASS,correct,2026-11-25
+V19,Evaluation (in_scope_paraphrase),Synthetic query Q19,Where do I enter my card details to pay?,FAQ009,FAQ009 (overlap 1),PASS,correct,2026-11-25
+V20,Evaluation (in_scope_direct),Synthetic query Q20,My MySEEU account is locked.,FAQ010,FAQ010 (overlap 3),PASS,correct,2026-11-25
+V21,Evaluation (in_scope_paraphrase),Synthetic query Q21,I cannot log in to my student account.,FAQ010,FAQ010 (overlap 1),PASS,correct,2026-11-25
+V22,Evaluation (in_scope_paraphrase),Synthetic query Q22,My password expired. What now?,FAQ010,OUT_OF_SCOPE (overlap 0),FAIL,false rejection (in-scope question rejected),2026-11-25
+V23,Evaluation (out_of_scope_unrelated),Synthetic query Q23,What is the best pizza in town?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V24,Evaluation (out_of_scope_unrelated),Synthetic query Q24,How do I fix my bicycle?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V25,Evaluation (out_of_scope_near_miss),Synthetic query Q25,What food is available at the university?,OUT_OF_SCOPE,FAQ008 (overlap 1),FAIL,false acceptance (out-of-scope question matched an FAQ),2026-11-25
+V26,Evaluation (out_of_scope_near_miss),Synthetic query Q26,How can I get a scholarship for studying abroad?,OUT_OF_SCOPE,FAQ004 (overlap 1),FAIL,false acceptance (out-of-scope question matched an FAQ),2026-11-25
+V27,Evaluation (out_of_scope_unrelated),Synthetic query Q27,Where is the university library located?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V28,Evaluation (out_of_scope_unrelated),Synthetic query Q28,What is the weather like today?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V29,Evaluation (out_of_scope_unrelated),Synthetic query Q29,Who is the dean of the faculty?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V30,Evaluation (out_of_scope_unrelated),Synthetic query Q30,Can you recommend a good laptop for programming?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V31,Evaluation (out_of_scope_unrelated),Synthetic query Q31,How do I apply for a visa?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V32,Evaluation (out_of_scope_unrelated),Synthetic query Q32,Is there a student parking area?,OUT_OF_SCOPE,OUT_OF_SCOPE (overlap 0),PASS,correct,2026-11-25
+V33,Evaluation (out_of_scope_near_miss),Synthetic query Q33,How do I pay for parking?,OUT_OF_SCOPE,FAQ009 (overlap 1),FAIL,false acceptance (out-of-scope question matched an FAQ),2026-11-25
