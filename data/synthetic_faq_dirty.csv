@@ -1,0 +1,7 @@
+faq_id,question,answer,category,source_url,last_verified
+S001,Where is the sample library?,The sample library is on floor 1.,Sample,synthetic,2026-11-01
+S001,Where is the sample gym?,The sample gym is in building B.,Sample,synthetic,2026-11-01
+S002,Where is the sample cafeteria?,The sample cafeteria is next to the entrance.,Sample,synthetic,2026-11-01
+S003,  where IS the sample cafeteria?  ,Duplicate of S002 with different case and spacing.,Sample,synthetic,2026-11-01
+S004,How do I book a sample room?,,Sample,synthetic,2026-11-01
+S005,,An answer that has no question.,Sample,synthetic,2026-11-01
