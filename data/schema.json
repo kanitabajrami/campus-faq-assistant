@@ -1,0 +1,47 @@
+{
+  "dataset": "Campus FAQ Assistant",
+  "version": "week2",
+  "fields": [
+    {
+      "name": "faq_id",
+      "type": "string",
+      "required": true,
+      "description": "Unique identifier for an FAQ record."
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "required": true,
+      "description": "Topic category assigned to the FAQ."
+    },
+    {
+      "name": "question",
+      "type": "string",
+      "required": true,
+      "description": "Canonical question representing the FAQ."
+    },
+    {
+      "name": "answer",
+      "type": "string",
+      "required": true,
+      "description": "Answer text; verify against official SEEU sources before publication."
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "required": true,
+      "description": "URL or source reference supporting the answer; use verification status if not verified."
+    },
+    {
+      "name": "last_verified",
+      "type": "string",
+      "required": true,
+      "description": "Date source was last checked in YYYY-MM-DD format, or NOT_VERIFIED."
+    }
+  ],
+  "rules": [
+    "faq_id must be unique.",
+    "Required fields must not be empty.",
+    "Do not present unverified information as official."
+  ]
+}
