@@ -27,7 +27,7 @@
       "description": "Answer text; verify against official SEEU sources before publication."
     },
     {
-      "name": "source",
+      "name": "source_url",
       "type": "string",
       "required": true,
       "description": "URL or source reference supporting the answer; use verification status if not verified."
