@@ -1,0 +1,34 @@
+﻿query_id,query_type,query,expected,tfidf_pred,tfidf_score,tfidf_correct,baseline_pred,baseline_overlap,baseline_correct
+Q01,in_scope_direct,Where can I find the academic calendar?,FAQ001,FAQ001,0.954,1,FAQ001,2,1
+Q02,in_scope_paraphrase,What are the important dates this semester?,FAQ001,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q03,in_scope_paraphrase,Where can I check the exam timetable?,FAQ002,FAQ002,0.675,1,FAQ002,1,1
+Q04,in_scope_paraphrase,When are the exams held?,FAQ002,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q05,in_scope_paraphrase,How do I sign up for courses?,FAQ003,FAQ003,0.675,1,FAQ003,1,1
+Q06,in_scope_paraphrase,I want to enroll in my subjects.,FAQ003,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q07,in_scope_paraphrase,Where do I find scholarship details?,FAQ004,FAQ004,0.722,1,FAQ004,1,1
+Q08,in_scope_paraphrase,Are there any financial aid opportunities?,FAQ004,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q09,in_scope_paraphrase,How can I get my transcript?,FAQ005,FAQ005,0.559,1,FAQ005,1,1
+Q10,in_scope_paraphrase,I need an official document showing my grades.,FAQ005,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q11,in_scope_paraphrase,Where can I get a certificate from the registry?,FAQ005,FAQ005,0.559,1,FAQ005,1,1
+Q12,in_scope_paraphrase,How can I contact Student Services?,FAQ006,FAQ006,0.828,1,FAQ006,1,1
+Q13,in_scope_paraphrase,Which office helps students with admission and guidance?,FAQ006,FAQ004,0.32,0,OUT_OF_SCOPE,0,0
+Q14,in_scope_direct,How many credits do I need to graduate?,FAQ007,FAQ007,0.707,1,FAQ007,3,1
+Q15,in_scope_paraphrase,What are the graduation requirements?,FAQ007,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q16,in_scope_direct,What payment options exist for tuition?,FAQ008,FAQ008,0.775,1,FAQ008,3,1
+Q17,in_scope_paraphrase,Can I pay my tuition in installments?,FAQ008,FAQ009,0.395,0,FAQ008,1,1
+Q18,in_scope_direct,How can I pay an invoice online?,FAQ009,FAQ009,0.791,1,FAQ009,2,1
+Q19,in_scope_paraphrase,Where do I enter my card details to pay?,FAQ009,FAQ009,0.559,1,FAQ009,1,1
+Q20,in_scope_direct,My MySEEU account is locked.,FAQ010,FAQ010,0.969,1,FAQ010,3,1
+Q21,in_scope_paraphrase,I cannot log in to my student account.,FAQ010,FAQ006,0.414,0,FAQ010,1,1
+Q22,in_scope_paraphrase,My password expired. What now?,FAQ010,OUT_OF_SCOPE,0.0,0,OUT_OF_SCOPE,0,0
+Q23,out_of_scope_unrelated,What is the best pizza in town?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q24,out_of_scope_unrelated,How do I fix my bicycle?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q25,out_of_scope_near_miss,What food is available at the university?,OUT_OF_SCOPE,FAQ008,0.447,0,FAQ008,1,0
+Q26,out_of_scope_near_miss,How can I get a scholarship for studying abroad?,OUT_OF_SCOPE,FAQ004,0.722,0,FAQ004,1,0
+Q27,out_of_scope_unrelated,Where is the university library located?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q28,out_of_scope_unrelated,What is the weather like today?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q29,out_of_scope_unrelated,Who is the dean of the faculty?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q30,out_of_scope_unrelated,Can you recommend a good laptop for programming?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q31,out_of_scope_unrelated,How do I apply for a visa?,OUT_OF_SCOPE,OUT_OF_SCOPE,0.0,1,OUT_OF_SCOPE,0,1
+Q32,out_of_scope_unrelated,Is there a student parking area?,OUT_OF_SCOPE,FAQ006,0.585,0,OUT_OF_SCOPE,0,1
+Q33,out_of_scope_near_miss,How do I pay for parking?,OUT_OF_SCOPE,FAQ009,0.559,0,FAQ009,1,0

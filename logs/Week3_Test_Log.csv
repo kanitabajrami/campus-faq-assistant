@@ -1,0 +1,38 @@
+﻿test_id,category,description,input,expected,actual,status,notes,date
+N01,Normal case,In-scope question answered correctly,Where can I see the exam timetable?,FAQ002,FAQ002,PASS,,2026-11-26
+N02,Normal case,In-scope question answered correctly,How do I sign up for courses?,FAQ003,FAQ003,PASS,,2026-11-26
+N03,Normal case,In-scope question answered correctly,Where do I find scholarship details?,FAQ004,FAQ004,PASS,,2026-11-26
+N04,Normal case,In-scope question answered correctly,How can I get my transcript?,FAQ005,FAQ005,PASS,,2026-11-26
+N05,Normal case,In-scope question answered correctly,How many credits do I need to graduate?,FAQ007,FAQ007,PASS,,2026-11-26
+N06,Normal case,In-scope question answered correctly,How can I pay an invoice online?,FAQ009,FAQ009,PASS,,2026-11-26
+N07,Normal case,In-scope question answered correctly,My MySEEU account is locked.,FAQ010,FAQ010,PASS,,2026-11-26
+N08,Normal case,In-scope question answered correctly,What payment options exist for tuition?,FAQ008,FAQ008,PASS,,2026-11-26
+N09,Normal case,In-scope question answered correctly,How can I contact Student Services?,FAQ006,FAQ006,PASS,,2026-11-26
+N10,Normal case,In-scope question answered correctly,Where can I find the academic calendar?,FAQ001,FAQ001,PASS,,2026-11-26
+N11,Normal case,Out-of-scope question gets the fallback,What is the best pizza in town?,NO_MATCH (fallback),NO_MATCH (fallback),PASS,,2026-11-26
+N12,Normal case,Full workflow: answer + source URL + one log row written,How do I sign up for courses?,"answer, source and log row present","answer, source and log row present",PASS,,2026-11-26
+I01,Invalid input,Empty text,,INVALID:EMPTY,INVALID:EMPTY,PASS,,2026-11-26
+I02,Invalid input,Only spaces and a tab,   \t  ,INVALID:EMPTY,INVALID:EMPTY,PASS,,2026-11-26
+I03,Invalid input,None instead of text,None,INVALID:NOT_TEXT,INVALID:NOT_TEXT,PASS,,2026-11-26
+I04,Invalid input,A number instead of text,12345,INVALID:NOT_TEXT,INVALID:NOT_TEXT,PASS,,2026-11-26
+I05,Invalid input,Only punctuation,"?!?! ... ,,,",INVALID:NO_LETTERS,INVALID:NO_LETTERS,PASS,,2026-11-26
+I06,Invalid input,Only digits,12345 67890,INVALID:NO_LETTERS,INVALID:NO_LETTERS,PASS,,2026-11-26
+I07,Invalid input,301 characters (over the limit),aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ... [301 chars],INVALID:TOO_LONG,INVALID:TOO_LONG,PASS,,2026-11-26
+I08,Invalid input,Control characters are removed,How do I register\x00\x07 for\ncourses?\x1b,FAQ003,FAQ003,PASS,,2026-11-26
+I09,Invalid input,HTML/script text treated as plain text,<script>alert(1)</script> exam schedule,FAQ002,FAQ002,PASS,,2026-11-26
+I10,Invalid input,Exactly 300 characters is accepted (boundary),x * 300,NO_MATCH (fallback),NO_MATCH (fallback),PASS,,2026-11-26
+E01,Exceptional case,Albanian question (assistant is English only),Ku mund ta gjej orarin e provimeve?,NO_MATCH (fallback),NO_MATCH (fallback),PASS,System is English only (out of scope).,2026-11-26
+E02,Exceptional case,Only stop-words,How do I do this?,NO_MATCH (fallback),NO_MATCH (fallback),PASS,,2026-11-26
+E03,Exceptional case,Typo in one word,Where can I see the exm schedule?,FAQ002,FAQ002,PASS,,2026-11-26
+E04,Exceptional case,Upper case and punctuation,WHERE IS THE EXAM SCHEDULE???,FAQ002,FAQ002,PASS,,2026-11-26
+E05,Exceptional case,Near miss: shares one word (pay) with FAQ009,How do I pay for parking?,NO_MATCH (fallback),FAQ009,FAIL,Known limitation: a single shared word (pay) is enough to pass the 0.20 threshold. Threshold tuning planned for Week 4.,2026-11-26
+E06,Exceptional case,Near miss: shares 'scholarship' with FAQ004,How can I get a scholarship for studying abroad?,NO_MATCH (fallback),FAQ004,FAIL,Known limitation: matches on 'scholarship' although the FAQ does not cover studying abroad.,2026-11-26
+E07,Exceptional case,Paraphrase with no shared words,I need an official document showing my grades.,FAQ005,NO_MATCH (fallback),FAIL,"Known limitation: no shared words, so TF-IDF scores 0. Needs stemming, synonyms or embeddings (Week 5 experiments).",2026-11-26
+E08,Exceptional case,Same question twice gives the same result,How do I sign up for courses? (x2),same FAQ and score,same FAQ and score,PASS,,2026-11-26
+E09,Exceptional case,Very long noisy question (290 chars) does not crash,exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please exam schedule please ,FAQ002,FAQ002,PASS,,2026-11-26
+H01,Error handling,FAQ file does not exist,faq_missing.csv,KnowledgeBaseError: FAQ file not found,KnowledgeBaseError: FAQ file not found,PASS,,2026-11-26
+H02,Error handling,FAQ file without the answer column,no_answer_col.csv,KnowledgeBaseError: FAQ file is missing required columns,KnowledgeBaseError: FAQ file is missing required columns,PASS,,2026-11-26
+H03,Error handling,FAQ file with a header but no rows,header_only.csv,KnowledgeBaseError: FAQ file has no valid FAQ entries,KnowledgeBaseError: FAQ file has no valid FAQ entries,PASS,,2026-11-26
+H04,Error handling,Threshold outside 0 to 1,threshold=1.5,ValueError: threshold must be a number between 0 and 1,ValueError: threshold must be a number between 0 and 1,PASS,,2026-11-26
+H05,Error handling,"Log file cannot be written: answer still returned, warning shown",unwritable log path,FAQ003 + log warning,FAQ003 + log warning,PASS,Logging failure must never block the answer.,2026-11-26
+H06,Error handling,"Dirty FAQ (duplicates, missing values): 2 clean rows kept and usable",synthetic_faq_dirty.csv,2 entries; FAQ S002,2 entries; FAQ S002,PASS,,2026-11-26

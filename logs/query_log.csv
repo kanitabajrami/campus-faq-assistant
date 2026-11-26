@@ -1,0 +1,7 @@
+timestamp,query_text,status,tfidf_id,tfidf_score,baseline_id,baseline_overlap,latency_ms
+2026-11-26T04:46:51,How do I sign up for courses?,ok,FAQ003,0.675,FAQ003,1,7.3
+2026-11-26T04:47:01,Where can I get a certificate from the registry?,ok,FAQ005,0.559,FAQ005,1,1.2
+2026-11-26T04:47:08,What is the best pizza in town?,no_match,OUT_OF_SCOPE,0.0,OUT_OF_SCOPE,0,5.6
+2026-11-26T04:47:15,,invalid,,,,,0.0
+2026-11-26T04:47:20,?!?! 123,invalid,,,,,0.0
+2026-11-26T04:47:26,How do I pay for parking?,ok,FAQ009,0.559,FAQ009,1,1.0
